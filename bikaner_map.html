@@ -178,7 +178,7 @@
 
             var doneMarker = L.marker([markerData.lat, markerData.lng], { icon: greenIcon })
                 .addTo(mymap)
-                .bindPopup(`<b>SL. NO.: ${markerData.slno}</b><br/>ScrewA Max Torque: ${markerData.screwA}<br/>ScrewB Max Torque: ${markerData.screwB}<br/>Easting: ${markerData.easting}<br/>Northing: ${markerData.northing}<br/>Latitude: ${markerData.lat}<br/>Longitude: ${markerData.lng}`);
+                .bindPopup(`<b>SL. NO.: ${markerData.slno}</b><br/>ScrewA Max Torque(N-m): ${markerData.screwA}<br/>ScrewB Max Torque(N-m): ${markerData.screwB}<br/>Easting: ${markerData.easting}<br/>Northing: ${markerData.northing}<br/>Latitude: ${markerData.lat}<br/>Longitude: ${markerData.lng}`);
         });
     </script>
 </body>
