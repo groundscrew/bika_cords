@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Coordinates Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        #mapid {
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapid"></div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        var mymap = L.map('mapid').setView([28.162354, 72.963731], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(mymap);
+
+        var markers = [
+            { lat: 28.1623540919367, lng: 72.9637311982379, slno: "1.0", easting: "300066.2837", northing: "3116864.646" },
+            { lat: 28.1601748974834, lng: 72.9673970084531, slno: "2.0", easting: "300422.2555", northing: "3116617.119" },
+            { lat: 28.1606394637098, lng: 72.9708325488703, slno: "3.0", easting: "300760.5249", northing: "3116662.954" },
+            { lat: 28.1606826202257, lng: 72.9737468425768, slno: "4.0", easting: "301046.8195", northing: "3116662.954" },
+            { lat: 28.159916607993, lng: 72.9759270782156, slno: "5.0", easting: "301259.5258", northing: "3116574.494" },
+            { lat: 28.1575232780417, lng: 72.9692523806801, slno: "6.0", easting: "300599.5569", northing: "3116320.225" },
+            { lat: 28.157649027606, lng: 72.9722722715281, slno: "7.0", easting: "300896.384", northing: "3116329.201" },
+            { lat: 28.1548425125409, lng: 72.970710296181, slno: "8.0", easting: "300737.777", northing: "3116020.757" },
+            { lat: 28.1567514928808, lng: 72.9755135894384, slno: "9.0", easting: "301213.0656", northing: "3116224.425" },
+            { lat: 28.1544906387926, lng: 72.9732389183823, slno: "10.0", easting: "300985.477", northing: "3115977.614" },
+            { lat: 28.1510744709646, lng: 72.9679496753162, slno: "11.0", easting: "300459.6493", northing: "3115607.732" },
+            { lat: 28.1525908947541, lng: 72.9720565083447, slno: "12.0", easting: "300865.8278", northing: "3115769.031" },
+            { lat: 28.155861366435, lng: 72.9786489591302, slno: "15.0", easting: "301519.3602", northing: "3116120.652" },
+            { lat: 28.1488399435239, lng: 72.971280389486, slno: "18.0", easting: "300782.6522", northing: "3115354.638" },
+            { lat: 28.1432744529822, lng: 72.9706589371021, slno: "21.0", easting: "300711.3034", northing: "3114738.911" },
+
+            { lat: 28.1453015031353, lng: 72.9909018854587, slno: "31.0", easting: "302703.4095", northing: "3114930.473" },
+            // Note: SLNO: 35.0 is a duplicate of 34.0
+            { lat: 28.1418625514323, lng: 72.9957012613618, slno: "36.0", easting: "303168.5327", northing: "3114541.593" },
+            { lat: 28.1457564785775, lng: 72.9942635124535, slno: "37.0", easting: "303034.4349", northing: "3114975.432" },
+            { lat: 28.1657844590421, lng: 72.9683551999251, slno: "39.0", easting: "300526.7687", northing: "3117237.176" },
+            { lat: 28.1658306921801, lng: 72.9714732252466, slno: "40.0", easting: "300833.0633", northing: "3117237.176" },
+            { lat: 28.1629649026589, lng: 72.966791708839, slno: "41.0", easting: "300367.9886", northing: "3116927.294" },
+            { lat: 28.1634233896384, lng: 72.9702341247488, slno: "42.0", easting: "300706.9136", northing: "3116972.442" },
+            { lat: 28.1634706529082, lng: 72.9734248105523, slno: "43.0", easting: "301020.3524", northing: "3116972.442" },
+            { lat: 28.1544884659723, lng: 72.9671240030947, slno: "44.0", easting: "300384.8882", northing: "3115987.417" },
+            { lat: 28.1487378526521, lng: 72.9688428720342, slno: "45.0", easting: "300543.0462", northing: "3115347.328" },
+            { lat: 28.1506838504241, lng: 72.9784360414241, slno: "46.0", easting: "301488.8929", northing: "3115547.248" },
+            { lat: 28.1485738601665, lng: 72.9794861827305, slno: "47.0", easting: "301588.1456", northing: "3115311.71" },
+            { lat: 28.1461948705704, lng: 72.9746871120425, slno: "48.0", easting: "301112.3755", northing: "3115055.934" },
+            { lat: 28.1435668432045, lng: 72.9734540651426, slno: "49.0", easting: "300986.4", northing: "3114766.727" },
+            { lat: 28.1457617395296, lng: 72.9781786854269, slno: "50.0", easting: "301454.5316", northing: "3115002.22" },
+            { lat: 28.1503997345465, lng: 72.9844746819099, slno: "52.0", easting: "302081.4822", northing: "3115505.901" },
+            { lat: 28.1582986766519, lng: 72.975904380914, slno: "55.0", easting: "301254.3063", northing: "3116395.238" },
+        ];
+
+        function addMarker(markerData) {
+            L.marker([markerData.lat, markerData.lng]).addTo(mymap)
+                .bindPopup(`<b>SLNO: ${markerData.slno}</b><br/>Easting: ${markerData.easting}<br/>Northing: ${markerData.northing}<br/>Coordinates: ${markerData.lat}, ${markerData.lng}`);
+        }
+
+        markers.forEach(addMarker);
+
+        var excelMarkers = [
+            { lat: 28.16578294570669, lng: 72.9682534018541, moNo: 'В1', easting: '300516.7687', northing: '3117237.1757', latitude: '28.16578294570669', longitude: '72.9682534018541' },
+            { lat: 28.16582918115975, lng: 72.97137142693462, moNo: 'В2', easting: '300823.0633', northing: '3117237.1757', latitude: '28.16582918115975', longitude: '72.97137142693462' },
+            { lat: 28.16342188232573, lng: 72.97013232870796, moNo: 'В3', easting: '300696.9136', northing: '3116972.4422', latitude: '28.16342188232573', longitude: '72.97013232870796' },
+            { lat: 28.16346914796447, lng: 72.97332301426529, moNo: 'В4', easting: '301010.3524', northing: '3116972.4422', latitude: '28.16346914796447', longitude: '72.97332301426529' },
+            { lat: 28.1624439088172, lng: 72.96361695730681, moNo: 'В5', easting: '300055.2312', northing: '3116874.7875', latitude: '28.1624439088172', longitude: '72.96361695730681' },
+            { lat: 28.15893990622336, lng: 72.9637981180154, moNo: 'В6', easting: '300066.5074', northing: '3116486.1866', latitude: '28.15893990622336', longitude: '72.9637981180154' },
+            { lat: 28.16017641118033, lng: 72.96749880116344, moNo: 'В7', easting: '300432.2555', northing: '3116617.1193', latitude: '28.16017641118033', longitude: '72.96749880116344' },
+            { lat: 28.16063795517394, lng: 72.97073075545983, moNo: 'В8', easting: '300750.5249', northing: '3116662.954', latitude: '28.16063795517394', longitude: '72.97073075545983' },
+            { lat: 28.16068412652247, lng: 72.97384863622001, moNo: 'В9', easting: '301056.8195', northing: '3116662.954', latitude: '28.16068412652247', longitude: '72.97384863622001' },
+            { lat: 28.15991811263221, lng: 72.97602887127165, moNo: 'В10', easting: '301269.5258', northing: '3116574.494', latitude: '28.15991811263221', longitude: '72.97602887127165' },
+            { lat: 28.15673094780308, lng: 72.96538415489537, moNo: 'В11', easting: '300218.1722', northing: '3116238.7846', latitude: '28.15673094780308', longitude: '72.96538415489537' },
+            { lat: 28.15752177119075, lng: 72.96915059026641, moNo: 'В12', easting: '300589.5569', northing: '3116320.2253', latitude: '28.15752177119075', longitude: '72.96915059026641' },
+            { lat: 28.1576505384587, lng: 72.97237406214035, moNo: 'В13', easting: '300906.384', northing: '3116329.2014', latitude: '28.1576505384587', longitude: '72.97237406214035' },
+            { lat: 28.15674998711117, lng: 72.97541179942738, moNo: 'В14', easting: '301203.0656', northing: '3116224.4249', latitude: '28.15674998711117', longitude: '72.97541179942738' },
+            { lat: 28.15585986754917, lng: 72.97854716967882, moNo: 'В15', easting: '301509.3602', northing: '3116120.6524', latitude: '28.15585986754917', longitude: '72.97854716967882' },
+            { lat: 28.15448997418024, lng: 72.96722579051102, moNo: 'В16', easting: '300394.8882', northing: '3115987.4167', latitude: '28.15448997418024', longitude: '72.96722579051102' },
+            { lat: 28.15484100149157, lng: 72.97060850831302, moNo: 'В17', easting: '300727.777', northing: '3116020.7567', latitude: '28.15484100149157', longitude: '72.97060850831302' },
+            { lat: 28.15448912963916, lng: 72.97313713068733, moNo: 'В18', easting: '300975.477', northing: '3115977.6137', latitude: '28.15448912963916', longitude: '72.97313713068733' },
+            { lat: 28.15342756822159, lng: 72.97706012392412, moNo: 'В19', easting: '301358.8179', northing: '3115853.5476', latitude: '28.15342756822159', longitude: '72.97706012392412' },
+            { lat: 28.15315362498535, lng: 72.98018381619761, moNo: 'В20', easting: '301665.1126', northing: '3115818.0811', latitude: '28.15315362498535', longitude: '72.98018381619761' },
+            { lat: 28.15107295985339, lng: 72.96784789115227, moNo: 'В21', easting: '300449.6493', northing: '3115607.7319', latitude: '28.15107295985339', longitude: '72.96784789115227' },
+            { lat: 28.15258939113021, lng: 72.97195472240207, moNo: 'В22', easting: '300855.8278', northing: '3115769.0314', latitude: '28.15258939113021', longitude: '72.97195472240207' },
+            { lat: 28.15170551625478, lng: 72.97424193037476, moNo: 'В23', easting: '301078.8382', northing: '3115667.3325', latitude: '28.15170551625478', longitude: '72.97424193037476' },
+            { lat: 28.15068234982839, lng: 72.97833425691664, moNo: 'В24', easting: '301478.8929', northing: '3115547.2482', latitude: '28.15068234982839', longitude: '72.97833425691664' },
+            { lat: 28.15040837312037, lng: 72.98145786764928, moNo: 'В25', easting: '301785.1876', northing: '3115511.7817', latitude: '28.15040837312037', longitude: '72.98145786764928' },
+            { lat: 28.15040122876271, lng: 72.98457646656976, moNo: 'В26', easting: '302091.4822', northing: '3115505.9006', latitude: '28.15040122876271', longitude: '72.98457646656976' },
+            { lat: 28.14873634412321, lng: 72.96874108998922, moNo: 'В27', easting: '300533.0462', northing: '3115347.3281', latitude: '28.14873634412321', longitude: '72.96874108998922' },
+            { lat: 28.14909385824973, lng: 72.97196735567593, moNo: 'В28', easting: '300850.5971', northing: '3115381.6485', latitude: '28.14909385824973', longitude: '72.97196735567593' },
+            { lat: 28.14913998418037, lng: 72.97508490541036, moNo: 'В29', easting: '301156.8918', northing: '3115381.6485', latitude: '28.14913998418037', longitude: '72.97508490541036' },
+            { lat: 28.1485723613559, lng: 72.97938440013527, moNo: 'В30', easting: '301578.1456', northing: '3115311.7103', latitude: '28.1485723613559', longitude: '72.97938440013527' },
+            { lat: 28.147952101461, lng: 72.98271837011976, moNo: 'В31', easting: '301904.4707', northing: '3115237.5297', latitude: '28.147952101461', longitude: '72.98271837011976' },
+            { lat: 28.14794492471843, lng: 72.98583690062033, moNo: 'В32', easting: '302210.7654', northing: '3115231.6486', latitude: '28.14794492471843', longitude: '72.98583690062033' },
+            { lat: 28.14588908204805, lng: 72.96881546484657, moNo: 'В33', easting: '300535.0725', northing: '3115031.6825', latitude: '28.14588908204805', longitude: '72.96881546484657' },
+            { lat: 28.14637675364055, lng: 72.97210798206112, moNo: 'В34', easting: '300859.3801', northing: '3115080.3183', latitude: '28.14637675364055', longitude: '72.97210798206112' },
+            { lat: 28.1461963745583, lng: 72.97478889206018, moNo: 'В35', easting: '301122.3755', northing: '3115055.9339', latitude: '28.1461963745583', longitude: '72.97478889206018' },
+            { lat: 28.14334504660135, lng: 72.96076789774216, moNo: 'В36', easting: '299739.8699', northing: '3114763.0116', latitude: '28.14334504660135', longitude: '72.96076789774216' },
+            { lat: 28.14306651106154, lng: 72.96432458113377, moNo: 'В37', easting: '300088.7141', northing: '3114726.2829', latitude: '28.14306651106154', longitude: '72.96432458113377' },
+            { lat: 28.14271499747295, lng: 72.96744945407828, moNo: 'В38', easting: '300395.0088', northing: '3114682.1873', latitude: '28.14271499747295', longitude: '72.96744945407828' },
+            { lat: 28.14327294065701, lng: 72.97055716020938, moNo: 'В39', easting: '300701.3034', northing: '3114738.9105', latitude: '28.14327294065701', longitude: '72.97055716020938' },
+            { lat: 28.14077552567602, lng: 72.9635457888535, moNo: 'В40', easting: '300007.9578', northing: '3114473.6866', latitude: '28.14077552567602', longitude: '72.9635457888535' },
+            { lat: 28.14082754014804, lng: 72.96689114147526, moNo: 'В41', easting: '300336.6652', northing: '3114473.9442', latitude: '28.14082754014804', longitude: '72.96689114147526' },
+            { lat: 28.14076386474823, lng: 72.97001051375811, moNo: 'В42', easting: '300642.9598', northing: '3114461.7616', latitude: '28.14076386474823', longitude: '72.97001051375811' },
+            { lat: 28.14356534106015, lng: 72.97335228764393, moNo: 'В43', easting: '300976.4', northing: '3114766.7274', latitude: '28.14356534106015', longitude: '72.97335228764393' },
+            { lat: 28.1424556614063, lng: 72.97772746318535, moNo: 'В44', easting: '301404.1087', northing: '3114636.5917', latitude: '28.1424556614063', longitude: '72.97772746318535' },
+            { lat: 28.14576023356996, lng: 72.97807690569127, moNo: 'В45', easting: '301444.5316', northing: '3115002.2196', latitude: '28.14576023356996', longitude: '72.97807690569127' },
+            { lat: 28.1452155623661, lng: 72.98144672778317, moNo: 'В46', easting: '301774.5256', northing: '3114936.3537', latitude: '28.1452155623661', longitude: '72.98144672778317' },
+            { lat: 28.14520841138402, lng: 72.98456517607151, moNo: 'В47', easting: '302080.8202', northing: '3114930.4727', latitude: '28.14520841138402', longitude: '72.98456517607151' },
+            { lat: 28.14525424490114, lng: 72.9876826375607, moNo: 'В48', easting: '302387.1149', northing: '3114930.4727', latitude: '28.14525424490114', longitude: '72.9876826375607' },
+            { lat: 28.14530000755026, lng: 72.9908001053423, moNo: 'В49', easting: '302693.4095', northing: '3114930.4727', latitude: '28.14530000755026', longitude: '72.9908001053423' },
+            { lat: 28.14534569936064, lng: 72.99391758144068, moNo: 'В50', easting: '302999.7042', northing: '3114930.4727', latitude: '28.14534569936064', longitude: '72.99391758144068' },
+            { lat: 28.14539132030182, lng: 72.99703506380891, moNo: 'В51', easting: '303305.9988', northing: '3114930.4727', latitude: '28.14539132030182', longitude: '72.99703506380891' },
+            { lat: 28.14244574356885, lng: 72.9846585662308, moNo: 'В52', easting: '302084.9119', northing: '3114624.1733', latitude: '28.14244574356885', longitude: '72.9846585662308' },
+            { lat: 28.14249157084985, lng: 72.98777594790906, moNo: 'В53', easting: '302391.2066', northing: '3114624.1733', latitude: '28.14249157084985', longitude: '72.98777594790906' },
+            { lat: 28.142537327271, lng: 72.99089333587882, moNo: 'В54', easting: '302697.5012', northing: '3114624.1733', latitude: '28.142537327271', longitude: '72.99089333587882' },
+            { lat: 28.14258301286157, lng: 72.99401073216437, moNo: 'В55', easting: '303003.7959', northing: '3114624.1733', latitude: '28.14258301286157', longitude: '72.99401073216437' },
+            { lat: 28.14083850053653, lng: 72.99564235137866, moNo: 'В56', easting: '303160.873', northing: '3114428.208', latitude: '28.14083850053653', longitude: '72.99564235137866' },
+            { lat: 28.15898395906748, lng: 72.97618611753472, moNo: 'В57', easting: '301283.2428', northing: '3116470.717', latitude: '28.15898395906748', longitude: '72.97618611753472' },
+            { lat: 28.15854549681159, lng: 72.97621740250375, moNo: 'В58', easting: '301285.5051', northing: '3116422.077', latitude: '28.15854549681159', longitude: '72.97621740250375' },
+            { lat: 28.15880479823233, lng: 72.97654581402978, moNo: 'В59', easting: '301318.2383', northing: '3116450.274', latitude: '28.15880479823233', longitude: '72.97654581402978' },
+            { lat: 28.15899756240908, lng: 72.97690456476168, moNo: 'В60', easting: '301353.8281', northing: '3116471.048', latitude: '28.15899756240908', longitude: '72.97690456476168' },
+            { lat: 28.1585846202529, lng: 72.97694994235464, moNo: 'В61', easting: '301357.5219', northing: '3116425.213', latitude: '28.1585846202529', longitude: '72.97694994235464' },
+
+        ];
+
+        excelMarkers.forEach(function (markerData) {
+            var circleMarker = L.circleMarker([markerData.lat, markerData.lng], {
+                color: 'brown',      // Circle border color
+                fillColor: '#b5651d', // Fill color
+                fillOpacity: 0.5,    // Fill opacity
+                radius: 8            // Circle radius
+            }).addTo(mymap);
+            circleMarker.bindPopup(`<b>МО. NO.: ${markerData.moNo}</b><br/>Easting: ${markerData.easting}<br/>Northing: ${markerData.northing}<br/>Latitude: ${markerData.latitude}<br/>Longitude: ${markerData.longitude}`);
+        });
+
+
+        var done_markers = [
+            { lat: 28.1403571524291, lng: 72.9916842691599, slno: "34.0", easting: "302771.1961", northing: "3114381.291", screwA: "3129", screwB: "3224" },
+        ];
+
+        done_markers.forEach(function (markerData) {
+            var greenIcon = L.icon({
+                iconUrl: 'bolt.png', // URL to the green pin image
+                iconSize: [30, 30],
+                iconAnchor: [12, 41], // Point of the icon which will correspond to marker's location
+                popupAnchor: [1, -34] // Size of the icon, adjust as needed
+            });
+
+            var doneMarker = L.marker([markerData.lat, markerData.lng], { icon: greenIcon })
+                .addTo(mymap)
+                .bindPopup(`<b>SL. NO.: ${markerData.slno}</b><br/>ScrewA Max Torque: ${markerData.screwA}<br/>ScrewB Max Torque: ${markerData.screwB}<br/>Easting: ${markerData.easting}<br/>Northing: ${markerData.northing}<br/>Latitude: ${markerData.lat}<br/>Longitude: ${markerData.lng}`);
+        });
+    </script>
+</body>
+
+</html>
