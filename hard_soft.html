@@ -905,35 +905,40 @@
           );
       });
 
-      var legend = L.control({ position: "bottomright" });
+      var legend = L.control({position: 'bottomright'});
 
-      legend.onAdd = function (map) {
-        var div = L.DomUtil.create("div", "info legend"),
-          labels = ["Hard Soil", "Soft Soil"], // The labels for your legend
-          images = ["hard.png", "soft.png"], // The images for your legend
-          percentages = [74, 26]; // The percentages for hard and soft soil
+legend.onAdd = function (map) {
 
-        // Add legend title
-        div.innerHTML = "<b>Soil Types</b><br>";
+    var div = L.DomUtil.create('div', 'info legend'),
+        labels = ["Hard Soil", "Soft Soil"], // The labels for your legend
+        images = ["hard.png", "soft.png"], // The images for your legend
+        percentages = [74, 26], // The percentages for hard and soft soil
+        criteria = [
+            "Hard Soil: Penetration < 2 m, or Penetration = 2m but with torque > 4.8 kNm",
+            "Soft Soil: Otherwise"
+        ]; // Criteria for soil classification
 
-        // Loop through our labels and generate a label with an image and text for each
-        for (var i = 0; i < labels.length; i++) {
-          div.innerHTML +=
-            '<img src="' +
-            images[i] +
-            '" alt="' +
-            labels[i] +
-            '" style="width:24px;height:24px;vertical-align:middle;"> ' +
-            labels[i] +
-            ": " +
-            percentages[i] +
-            "%<br>";
-        }
+    // Add legend title
+    div.innerHTML = '<b>Soil Types & Criteria</b><br>';
 
-        return div;
-      };
+    // Loop through our labels and generate a label with an image and text for each
+    for (var i = 0; i < labels.length; i++) {
+        div.innerHTML +=
+            ('<img src="' + images[i] + '" alt="' + labels[i] + '" style="width:24px;height:24px;vertical-align:middle;"> ' +
+            labels[i] + ': ' + percentages[i] + '%<br>');
+    }
 
-      legend.addTo(mymap);
+    // Add soil classification criteria
+    div.innerHTML += '<br><b>Classification Criteria</b><br>';
+    criteria.forEach(function(criterion) {
+        div.innerHTML += criterion + '<br>';
+    });
+
+    return div;
+};
+
+legend.addTo(mymap);
+
     </script>
     <style>
       .legend {
